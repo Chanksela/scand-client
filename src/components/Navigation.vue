@@ -3,7 +3,7 @@
 		<h1 class="nav-header">Product List</h1>
 		<nav class="nav-links">
 			<RouterLink to="/product" class="btn-link">Add </RouterLink>
-			<a href="#" class="btn-link">Mass Delete</a>
+			<a href="#" class="btn-link" @click="handleDelete">Mass Delete</a>
 		</nav>
 	</div>
 	<div v-else class="nav-container">
@@ -19,6 +19,21 @@
 	export default {
 		components: {
 			RouterLink,
+		},
+		methods: {
+			handleDelete() {
+				fetch("http://localhost:8000/product", {
+					method: "DELETE",
+				})
+					.then((response) => {
+						// Handle response
+						console.log(response);
+					})
+					.catch((error) => {
+						// Handle error
+						console.log(error);
+					});
+			},
 		},
 	};
 </script>

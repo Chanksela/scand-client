@@ -28,7 +28,9 @@
 		},
 		mounted() {
 			try {
-				fetch("http://localhost:8000")
+				fetch("http://localhost:8000", {
+					method: "GET",
+				})
 					.then((response) => response.json())
 					.then((json) => {
 						this.data = json["products"];
