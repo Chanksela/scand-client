@@ -1,17 +1,19 @@
 <template>
-	<div v-if="this.$route.name === 'home'">
-		<h1>Product List</h1>
-		<nav>
-			<RouterLink to="/product">Add </RouterLink>
-			<a href="#">Mass Delete</a>
-		</nav>
-	</div>
-	<div v-else>
-		<h1>Product Add</h1>
-		<nav>
-			<a>Save</a>
-			<RouterLink to="/">Cancel</RouterLink>
-		</nav>
+	<div class="nav-wrapper">
+		<div v-if="this.$route.name === 'home'" class="nav-container">
+			<h1 class="nav-header">Product List</h1>
+			<nav class="nav-links">
+				<RouterLink to="/product" class="btn-link">Add </RouterLink>
+				<a href="#" class="btn-link">Mass Delete</a>
+			</nav>
+		</div>
+		<div v-else class="nav-container">
+			<h1 class="nav-header">Product Add</h1>
+			<nav class="nav-links">
+				<a href="#" class="btn-link">Save</a>
+				<RouterLink to="/" class="btn-link">Cancel</RouterLink>
+			</nav>
+		</div>
 	</div>
 </template>
 <script>
@@ -22,3 +24,27 @@
 		},
 	};
 </script>
+<style scoped>
+	.nav-wrapper {
+		margin: 0.3rem 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid black;
+	}
+	.nav-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.nav-header {
+		width: 80%;
+		cursor: default;
+	}
+
+	.nav-links {
+		flex-grow: 1;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 1rem;
+	}
+</style>
