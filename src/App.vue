@@ -1,16 +1,16 @@
 <template>
 	<header>
-		<div class="wrapper">
-			<h1>Product List</h1>
-			<nav>
-				<RouterLink to="/">Products</RouterLink>
-				<RouterLink to="/product">Add Product</RouterLink>
-			</nav>
-		</div>
+		<Navigation />
 	</header>
-
 	<RouterView />
 </template>
-<script setup>
-	import { RouterLink, RouterView } from "vue-router";
+<script>
+	import { RouterView } from "vue-router";
+	import Navigation from "./components/Navigation.vue";
+	export default {
+		components: {
+			Navigation,
+			RouterView,
+		},
+	};
 </script>
