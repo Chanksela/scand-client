@@ -3,6 +3,30 @@
 	padding: 0;
 	list-style: none;
 }
+body {
+	height: 100vh;
+}
+#app {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+header {
+	margin: 0.3rem 1rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid black;
+}
+footer {
+	height: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid black;
+	margin: 0.3rem 1rem;
+}
+main {
+	flex-grow: 1;
+}
 a {
 	text-decoration: none;
 	color: black;

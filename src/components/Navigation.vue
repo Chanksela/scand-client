@@ -1,19 +1,17 @@
 <template>
-	<div class="nav-wrapper">
-		<div v-if="this.$route.name === 'home'" class="nav-container">
-			<h1 class="nav-header">Product List</h1>
-			<nav class="nav-links">
-				<RouterLink to="/product" class="btn-link">Add </RouterLink>
-				<a href="#" class="btn-link">Mass Delete</a>
-			</nav>
-		</div>
-		<div v-else class="nav-container">
-			<h1 class="nav-header">Product Add</h1>
-			<nav class="nav-links">
-				<a href="#" class="btn-link">Save</a>
-				<RouterLink to="/" class="btn-link">Cancel</RouterLink>
-			</nav>
-		</div>
+	<div v-if="this.$route.name === 'home'" class="nav-container">
+		<h1 class="nav-header">Product List</h1>
+		<nav class="nav-links">
+			<RouterLink to="/product" class="btn-link">Add </RouterLink>
+			<a href="#" class="btn-link">Mass Delete</a>
+		</nav>
+	</div>
+	<div v-else class="nav-container">
+		<h1 class="nav-header">Product Add</h1>
+		<nav class="nav-links">
+			<a href="#" class="btn-link">Save</a>
+			<RouterLink to="/" class="btn-link">Cancel</RouterLink>
+		</nav>
 	</div>
 </template>
 <script>
@@ -25,11 +23,6 @@
 	};
 </script>
 <style scoped>
-	.nav-wrapper {
-		margin: 0.3rem 1rem;
-		padding-bottom: 0.5rem;
-		border-bottom: 1px solid black;
-	}
 	.nav-container {
 		display: flex;
 		justify-content: space-between;
