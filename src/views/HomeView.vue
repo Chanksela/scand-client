@@ -46,7 +46,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		gap: 10px;
-		padding: 10px;
+		padding: 0.6rem 1rem;
 	}
 	.product-box {
 		width: 200px;
