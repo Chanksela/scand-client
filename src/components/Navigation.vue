@@ -25,6 +25,10 @@
 				type: Function,
 				required: true,
 			},
+			selectedProducts: {
+				type: Array,
+				required: true,
+			},
 		},
 		methods: {
 			handleDelete() {
@@ -34,7 +38,7 @@
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
-						ids: [5],
+						ids: this.selectedProducts,
 					}),
 				})
 					.then((response) => {

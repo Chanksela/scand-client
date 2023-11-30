@@ -1,12 +1,21 @@
 <template>
 	<header>
-		<Navigation :fetchData="fetchData" />
+		<Navigation
+			:fetchData="fetchData"
+			:selectedProducts="selectedProducts"
+			@selectedProducts="handleSelectedProducts"
+		/>
 	</header>
 	<main>
-		<RouterView :data="data" />
+		<RouterView
+			:data="data"
+			:selectedProducts="selectedProducts"
+			@selectedProducts="handleSelectedProducts"
+		/>
 	</main>
 	<footer><Footer /></footer>
 </template>
+
 <script>
 	import Navigation from "./components/Navigation.vue";
 	import { RouterView } from "vue-router";
@@ -20,6 +29,7 @@
 		data() {
 			return {
 				data: {},
+				selectedProducts: [],
 			};
 		},
 		methods: {
@@ -35,6 +45,9 @@
 				} catch (error) {
 					console.error("An error occurred:", error);
 				}
+			},
+			handleSelectedProducts(products) {
+				this.selectedProducts = products;
 			},
 		},
 		mounted() {

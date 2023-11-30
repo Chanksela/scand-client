@@ -1,13 +1,14 @@
 <template>
 	<main>
 		<div v-if="Object.keys(data).length > 0" class="product-container">
-			<ul v-for="item in data">
+			<ul v-for="item in data" :key="item.id">
 				<li class="product-box">
 					<input
 						type="checkbox"
 						name="product"
 						class="checkbox"
-						:id="item.id"
+						:value="item.id"
+						v-model="selectedProducts"
 					/>
 					<div>{{ item.sku }}</div>
 					<div>{{ item.name }}</div>
@@ -16,9 +17,12 @@
 				</li>
 			</ul>
 		</div>
-		<div v-else>Couldn't fetch data, please wait for some time...</div>
+		<div v-else class="product-container">
+			Couldn't fetch data, please wait for some time...
+		</div>
 	</main>
 </template>
+
 <script>
 	export default {
 		props: {
@@ -27,8 +31,28 @@
 				required: true,
 			},
 		},
+		emits: ["selected-products"],
+		data() {
+			return {
+				selectedProducts: [],
+			};
+		},
+		methods: {
+			emitSelectedProducts() {
+				this.$emit("selected-products", this.selectedProducts);
+			},
+		},
+		watch: {
+			selectedProducts: {
+				handler() {
+					this.emitSelectedProducts();
+				},
+				deep: true,
+			},
+		},
 	};
 </script>
+
 <style scoped>
 	.product-container {
 		display: flex;
