@@ -24,13 +24,17 @@
 			handleDelete() {
 				fetch("http://localhost:8000/product", {
 					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						ids: [1, 2, 3],
+					}),
 				})
 					.then((response) => {
-						// Handle response
 						console.log(response);
 					})
 					.catch((error) => {
-						// Handle error
 						console.log(error);
 					});
 			},
