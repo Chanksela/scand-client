@@ -20,6 +20,12 @@
 		components: {
 			RouterLink,
 		},
+		props: {
+			fetchData: {
+				type: Function,
+				required: true,
+			},
+		},
 		methods: {
 			handleDelete() {
 				fetch("http://localhost:8000/product", {
@@ -28,11 +34,11 @@
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
-						ids: [1, 2, 3],
+						ids: [5],
 					}),
 				})
 					.then((response) => {
-						console.log(response);
+						this.fetchData();
 					})
 					.catch((error) => {
 						console.log(error);

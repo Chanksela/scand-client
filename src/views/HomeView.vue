@@ -21,23 +21,11 @@
 </template>
 <script>
 	export default {
-		data() {
-			return {
-				data: {},
-			};
-		},
-		mounted() {
-			try {
-				fetch("http://localhost:8000", {
-					method: "GET",
-				})
-					.then((response) => response.json())
-					.then((json) => {
-						this.data = json["products"];
-					});
-			} catch (error) {
-				console.error("An error occurred:", error);
-			}
+		props: {
+			data: {
+				type: Object,
+				required: true,
+			},
 		},
 	};
 </script>
