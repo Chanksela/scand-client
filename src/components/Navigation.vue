@@ -3,7 +3,7 @@
 		<h1 class="nav-header">Product List</h1>
 		<nav class="nav-links">
 			<RouterLink to="/product" class="btn-link">Add </RouterLink>
-			<a href="#" class="btn-link">Mass Delete</a>
+			<a href="#" class="btn-link" @click="handleDelete">Mass Delete</a>
 		</nav>
 	</div>
 	<div v-else class="nav-container">
@@ -19,6 +19,39 @@
 	export default {
 		components: {
 			RouterLink,
+		},
+		props: {
+			// receiving the fetchData function from the parent component
+			fetchData: {
+				type: Function,
+				required: true,
+			},
+			// receiving the selected products from the parent component
+			selectedProducts: {
+				type: Array,
+				required: true,
+			},
+		},
+		methods: {
+			handleDelete() {
+				fetch("http://localhost:8000/product", {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						// sending the selected products to the backend
+						ids: this.selectedProducts,
+					}),
+				})
+					.then((response) => {
+						// refreshing the products list after delete action
+						this.fetchData();
+					})
+					.catch((error) => {
+						console.log(error);
+					});
+			},
 		},
 	};
 </script>

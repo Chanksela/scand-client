@@ -1,13 +1,14 @@
 <template>
 	<main>
 		<div v-if="Object.keys(data).length > 0" class="product-container">
-			<ul v-for="item in data">
+			<ul v-for="item in data" :key="item.id">
 				<li class="product-box">
 					<input
 						type="checkbox"
 						name="product"
 						class="checkbox"
-						:id="item.id"
+						:value="item.id"
+						v-model="selectedProducts"
 					/>
 					<div>{{ item.sku }}</div>
 					<div>{{ item.name }}</div>
@@ -16,29 +17,44 @@
 				</li>
 			</ul>
 		</div>
-		<div v-else>Couldn't fetch data, please wait for some time...</div>
+		<div v-else class="product-container">
+			Couldn't fetch data, please wait for some time...
+		</div>
 	</main>
 </template>
+
 <script>
 	export default {
+		props: {
+			data: {
+				type: Object,
+				required: true,
+			},
+		},
+		emits: ["selected-products"],
 		data() {
 			return {
-				data: {},
+				selectedProducts: [],
 			};
 		},
-		mounted() {
-			try {
-				fetch("http://localhost:8000")
-					.then((response) => response.json())
-					.then((json) => {
-						this.data = json["products"];
-					});
-			} catch (error) {
-				console.error("An error occurred:", error);
-			}
+		methods: {
+			// emitting the selected products to the parent component
+			emitSelectedProducts() {
+				this.$emit("selected-products", this.selectedProducts);
+			},
+		},
+		// watching the selected products array for changes
+		watch: {
+			selectedProducts: {
+				handler() {
+					this.emitSelectedProducts();
+				},
+				deep: true,
+			},
 		},
 	};
 </script>
+
 <style scoped>
 	.product-container {
 		display: flex;
