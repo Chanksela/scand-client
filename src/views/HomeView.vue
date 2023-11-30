@@ -38,10 +38,12 @@
 			};
 		},
 		methods: {
+			// emitting the selected products to the parent component
 			emitSelectedProducts() {
 				this.$emit("selected-products", this.selectedProducts);
 			},
 		},
+		// watching the selected products array for changes
 		watch: {
 			selectedProducts: {
 				handler() {

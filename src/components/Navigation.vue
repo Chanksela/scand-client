@@ -21,10 +21,12 @@
 			RouterLink,
 		},
 		props: {
+			// receiving the fetchData function from the parent component
 			fetchData: {
 				type: Function,
 				required: true,
 			},
+			// receiving the selected products from the parent component
 			selectedProducts: {
 				type: Array,
 				required: true,
@@ -38,10 +40,12 @@
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
+						// sending the selected products to the backend
 						ids: this.selectedProducts,
 					}),
 				})
 					.then((response) => {
+						// refreshing the products list after delete action
 						this.fetchData();
 					})
 					.catch((error) => {

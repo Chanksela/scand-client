@@ -46,6 +46,7 @@
 					console.error("An error occurred:", error);
 				}
 			},
+			// assigning the selected products to the selectedProducts array from HomeView.vue
 			handleSelectedProducts(products) {
 				this.selectedProducts = products;
 			},
