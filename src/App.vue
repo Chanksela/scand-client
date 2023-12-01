@@ -4,12 +4,14 @@
 			:fetchData="fetchData"
 			:selectedProducts="selectedProducts"
 			@selectedProducts="handleSelectedProducts"
+			@saveHandler="saveHandler"
 		/>
 	</header>
 	<main>
 		<RouterView
 			:data="data"
 			:selectedProducts="selectedProducts"
+			:clicked="clicked"
 			@selectedProducts="handleSelectedProducts"
 		/>
 	</main>
@@ -30,6 +32,7 @@
 			return {
 				data: {},
 				selectedProducts: [],
+				clicked: 0,
 			};
 		},
 		methods: {
@@ -49,6 +52,10 @@
 			// assigning the selected products to the selectedProducts array from HomeView.vue
 			handleSelectedProducts(products) {
 				this.selectedProducts = products;
+			},
+			// handling the save button click
+			saveHandler(value) {
+				this.clicked = value;
 			},
 		},
 		mounted() {

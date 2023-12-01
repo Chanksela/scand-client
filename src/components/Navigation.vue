@@ -9,7 +9,7 @@
 	<div v-else class="nav-container">
 		<h1 class="nav-header">Product Add</h1>
 		<nav class="nav-links">
-			<a href="#" class="btn-link">Save</a>
+			<a class="btn-link" @click="emitSaveHandler">Save</a>
 			<RouterLink to="/" class="btn-link">Cancel</RouterLink>
 		</nav>
 	</div>
@@ -32,6 +32,12 @@
 				required: true,
 			},
 		},
+		emits: ["save-handler"],
+		data() {
+			return {
+				clicked: 0,
+			};
+		},
 		methods: {
 			handleDelete() {
 				fetch("http://localhost:8000/product", {
@@ -51,6 +57,11 @@
 					.catch((error) => {
 						console.log(error);
 					});
+			},
+			// emitting the clicked value to the parent component
+			emitSaveHandler() {
+				this.clicked++;
+				this.$emit("save-handler", this.clicked);
 			},
 		},
 	};
