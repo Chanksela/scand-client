@@ -19,20 +19,28 @@
 			<section class="product-switcher">
 				<div class="input-wrapper">
 					<label for="productType">Type Switcher</label>
-					<select name="productType" id="productType">
+					<select name="productType" id="productType" v-model="productType">
 						<option value="DVD">DVD</option>
 						<option value="Furniture">Furniture</option>
 						<option value="Book">Book</option>
 					</select>
 				</div>
 			</section>
-			<section class="product-optional-input" id="DVD">
+			<section
+				class="product-optional-input"
+				id="DVD"
+				v-if="productType === 'DVD'"
+			>
 				<div class="input-wrapper">
 					<label for="size">Size (MB)</label>
 					<input type="number" id="size" name="size" required />
 				</div>
 			</section>
-			<section class="product-optional-input" id="Furniture">
+			<section
+				class="product-optional-input"
+				id="Furniture"
+				v-else-if="productType === 'Furniture'"
+			>
 				<div class="input-wrapper">
 					<label for="height">Height (CM)</label>
 					<input type="number" id="height" name="height" required />
@@ -46,7 +54,11 @@
 					<input type="number" id="length" name="length" required />
 				</div>
 			</section>
-			<section class="product-optional-input" id="Book">
+			<section
+				class="product-optional-input"
+				id="Book"
+				v-else-if="productType === 'Book'"
+			>
 				<div class="input-wrapper">
 					<label for="weight">Weight (KG)</label>
 					<input type="number" id="weight" name="weight" required />
@@ -55,3 +67,12 @@
 		</form>
 	</main>
 </template>
+<script>
+	export default {
+		data() {
+			return {
+				productType: "DVD",
+			};
+		},
+	};
+</script>
