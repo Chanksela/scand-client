@@ -1,3 +1,3 @@
 <template>
-	<h4>Scandiweb Test assignment</h4>
+	<h4 id="footer">Scandiweb Test assignment</h4>
 </template>
