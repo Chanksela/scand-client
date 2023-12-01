@@ -1,72 +1,67 @@
 <script></script>
 <template>
-	<main>
-		<form action="" id="product-form">
-			<section class="product-main-input">
-				<div class="input-wrapper">
-					<label for="sku">SKU</label>
-					<input
-						type="text"
-						id="sku"
-						name="sku"
-						placeholder="Please enter the SKU"
-						required
-					/>
-				</div>
-				<div class="input-wrapper">
-					<label for="name">Name</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						placeholder="Please enter the name of the product"
-						required
-					/>
-				</div>
-				<div class="input-wrapper">
-					<label for="price">Price ($)</label>
-					<input
-						type="number"
-						id="price"
-						name="price"
-						placeholder="Please enter the price of the Product"
-						required
-					/>
-				</div>
-			</section>
-			<section class="product-switcher">
-				<div class="input-wrapper">
-					<label for="productType">Type Switcher</label>
-					<select name="productType" id="productType" v-model="productType">
-						<option value="DVD">DVD</option>
-						<option value="Furniture">Furniture</option>
-						<option value="Book">Book</option>
-					</select>
-				</div>
-			</section>
-			<section
-				class="product-optional-input"
-				id="DVD"
-				v-if="productType === 'DVD'"
-			>
-				<p>Please enter the size of DVD in MB</p>
+	<form action="" id="product_form">
+		<section class="form-section">
+			<div class="input-wrapper">
+				<label for="sku">SKU</label>
+				<input
+					type="text"
+					id="sku"
+					name="sku"
+					placeholder="Product SKU"
+					required
+				/>
+			</div>
+			<div class="input-wrapper">
+				<label for="name">Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Product Name"
+					required
+				/>
+			</div>
+			<div class="input-wrapper">
+				<label for="price">Price ($)</label>
+				<input
+					type="number"
+					id="price"
+					name="price"
+					placeholder="Product Price"
+					required
+				/>
+			</div>
+		</section>
+		<section class="form-section">
+			<div class="input-wrapper">
+				<label for="productType">Type Switcher</label>
+				<select name="productType" id="productType" v-model="productType">
+					<option value="DVD">DVD</option>
+					<option value="Furniture">Furniture</option>
+					<option value="Book">Book</option>
+				</select>
+			</div>
+		</section>
+		<section class="form-section">
+			<div class="optional-section" id="DVD" v-if="productType === 'DVD'">
 				<div class="input-wrapper">
 					<label for="size">Size (MB)</label>
 					<input
 						type="number"
 						id="size"
 						name="size"
-						placeholder="Size of dvd in MB"
+						placeholder="Size in MB"
 						required
 					/>
 				</div>
-			</section>
-			<section
-				class="product-optional-input"
+				<p class="product-description">Please enter the size of DVD in MB</p>
+			</div>
+			<div
+				class="optional-section"
 				id="Furniture"
 				v-else-if="productType === 'Furniture'"
 			>
-				<p>Please enter dimensions of Furniture in HxWxL</p>
 				<div class="input-wrapper">
 					<label for="height">Height (CM)</label>
 					<input
@@ -97,13 +92,15 @@
 						required
 					/>
 				</div>
-			</section>
-			<section
-				class="product-optional-input"
+				<p class="product-description">
+					Please enter dimensions of Furniture in HxWxL
+				</p>
+			</div>
+			<div
+				class="optional-section"
 				id="Book"
 				v-else-if="productType === 'Book'"
 			>
-				<p>Please enter the book in KG</p>
 				<div class="input-wrapper">
 					<label for="weight">Weight (KG)</label>
 					<input
@@ -114,9 +111,10 @@
 						required
 					/>
 				</div>
-			</section>
-		</form>
-	</main>
+				<p class="product-description">Please enter the book in KG</p>
+			</div>
+		</section>
+	</form>
 </template>
 <script>
 	export default {
@@ -127,3 +125,54 @@
 		},
 	};
 </script>
+<style scoped>
+	#product_form {
+		margin: 0.3rem 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		height: 100%;
+		width: 60%;
+		gap: 2%;
+	}
+	.form-section {
+		height: 30%;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form-section:nth-child(1) {
+		margin-top: 1rem;
+		gap: 4rem;
+	}
+	.form-section:nth-child(2) {
+		height: 20%;
+		justify-content: flex-start;
+		margin-top: 1rem;
+	}
+	.form-section:nth-child(3) {
+		flex-grow: 1;
+		justify-content: flex-start;
+	}
+
+	.input-wrapper {
+		display: flex !important;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	.optional-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 4rem;
+	}
+
+	.product-description {
+		margin-top: 0.2rem;
+		color: #10132c;
+	}
+</style>

@@ -64,6 +64,7 @@
 	.nav-header {
 		width: 80%;
 		cursor: default;
+		color: #10132c;
 	}
 
 	.nav-links {
