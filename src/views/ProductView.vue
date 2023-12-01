@@ -1,6 +1,6 @@
 <script></script>
 <template>
-	<form action="" id="product_form">
+	<form id="product_form" @submit="handleSubmit">
 		<section class="form-section">
 			<div class="input-wrapper">
 				<label for="sku">SKU</label>
@@ -114,6 +114,7 @@
 				<p class="product-description">Please enter the book in KG</p>
 			</div>
 		</section>
+		<button type="submit" ref="submitButton" hidden />
 	</form>
 </template>
 <script>
@@ -122,6 +123,32 @@
 			return {
 				productType: "DVD",
 			};
+		},
+		props: {
+			// receiving the clicked value from the parent component
+			clicked: {
+				type: Number,
+				required: true,
+			},
+		},
+		methods: {
+			handleSubmit(e) {
+				e.preventDefault();
+				const formData = new FormData(e.target);
+				const data = Object.fromEntries(formData);
+				console.log(data);
+			},
+		},
+		watch: {
+			// watching the clicked value for changes
+			// when it changes, the submit button is clicked
+			// and we try to submit the form
+			clicked: {
+				handler() {
+					this.$refs.submitButton.click();
+				},
+				deep: true,
+			},
 		},
 	};
 </script>
