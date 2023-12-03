@@ -130,13 +130,31 @@
 				type: Number,
 				required: true,
 			},
+			// accepting fetchData function to refresh the products list after save action
+			fetchData: {
+				type: Function,
+				required: true,
+			},
 		},
 		methods: {
 			handleSubmit(e) {
 				e.preventDefault();
 				const formData = new FormData(e.target);
 				const data = Object.fromEntries(formData);
-				console.log(data);
+				fetch("http://localhost:8000/product", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				})
+					.then((response) => {
+						this.fetchData();
+						this.$router.push("/");
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 			},
 		},
 		watch: {
