@@ -136,6 +136,19 @@
 				e.preventDefault();
 				const formData = new FormData(e.target);
 				const data = Object.fromEntries(formData);
+				fetch("http://localhost:8000/product", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				})
+					.then((response) => {
+						console.log(response);
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 				console.log(data);
 			},
 		},
