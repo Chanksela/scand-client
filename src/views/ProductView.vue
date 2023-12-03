@@ -130,6 +130,11 @@
 				type: Number,
 				required: true,
 			},
+			// accepting fetchData function to refresh the products list after save action
+			fetchData: {
+				type: Function,
+				required: true,
+			},
 		},
 		methods: {
 			handleSubmit(e) {
@@ -144,12 +149,12 @@
 					body: JSON.stringify(data),
 				})
 					.then((response) => {
-						console.log(response);
+						this.fetchData();
+						this.$router.push("/");
 					})
 					.catch((error) => {
 						console.log(error);
 					});
-				console.log(data);
 			},
 		},
 		watch: {

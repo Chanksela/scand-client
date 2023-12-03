@@ -9,6 +9,7 @@
 	</header>
 	<main>
 		<RouterView
+			:fetchData="fetchData"
 			:data="data"
 			:selectedProducts="selectedProducts"
 			:clicked="clicked"
