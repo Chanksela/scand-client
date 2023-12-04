@@ -28,6 +28,7 @@
 					type="number"
 					id="price"
 					name="price"
+					step="0.01"
 					placeholder="Product Price"
 					required
 				/>
@@ -37,37 +38,49 @@
 			<div class="input-wrapper">
 				<label for="productType">Type Switcher</label>
 				<select name="productType" id="productType" v-model="productType">
-					<option value="DVD">DVD</option>
-					<option value="Furniture">Furniture</option>
-					<option value="Book">Book</option>
+					<option :value="1">DVD</option>
+					<option :value="2">Book</option>
+					<option :value="3">Furniture</option>
 				</select>
 			</div>
 		</section>
 		<section class="form-section">
-			<div class="optional-section" id="DVD" v-if="productType === 'DVD'">
+			<div class="optional-section" id="DVD" v-if="productType == 1">
 				<div class="input-wrapper">
 					<label for="size">Size (MB)</label>
 					<input
 						type="number"
 						id="size"
 						name="size"
+						step="0.01"
 						placeholder="Size in MB"
 						required
 					/>
 				</div>
 				<p class="product-description">Please enter the size of DVD in MB</p>
 			</div>
-			<div
-				class="optional-section"
-				id="Furniture"
-				v-else-if="productType === 'Furniture'"
-			>
+			<div class="optional-section" id="Book" v-else-if="productType == 2">
+				<div class="input-wrapper">
+					<label for="weight">Weight (KG)</label>
+					<input
+						type="number"
+						id="weight"
+						name="weight"
+						step="0.01"
+						placeholder="Weight in KG"
+						required
+					/>
+				</div>
+				<p class="product-description">Please enter the book in KG</p>
+			</div>
+			<div class="optional-section" id="Furniture" v-else-if="productType == 3">
 				<div class="input-wrapper">
 					<label for="height">Height (CM)</label>
 					<input
 						type="number"
 						id="height"
 						name="height"
+						step="0.01"
 						placeholder="Height in CM"
 						required
 					/>
@@ -78,6 +91,7 @@
 						type="number"
 						id="width"
 						name="width"
+						step="0.01"
 						placeholder="Width in CM"
 						required
 					/>
@@ -88,6 +102,7 @@
 						type="number"
 						id="length"
 						name="length"
+						step="0.01"
 						placeholder="Length in CM"
 						required
 					/>
@@ -95,23 +110,6 @@
 				<p class="product-description">
 					Please enter dimensions of Furniture in HxWxL
 				</p>
-			</div>
-			<div
-				class="optional-section"
-				id="Book"
-				v-else-if="productType === 'Book'"
-			>
-				<div class="input-wrapper">
-					<label for="weight">Weight (KG)</label>
-					<input
-						type="number"
-						id="weight"
-						name="weight"
-						placeholder="Weight in KG"
-						required
-					/>
-				</div>
-				<p class="product-description">Please enter the book in KG</p>
 			</div>
 		</section>
 		<button type="submit" ref="submitButton" hidden />
@@ -121,7 +119,7 @@
 	export default {
 		data() {
 			return {
-				productType: "DVD",
+				productType: 1,
 			};
 		},
 		props: {
