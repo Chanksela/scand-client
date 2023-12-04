@@ -1,6 +1,5 @@
-<script></script>
 <template>
-	<form id="product_form" @submit="handleSubmit">
+	<form id="product_form" @submit="handleSubmit" ref="productForm">
 		<section class="form-section">
 			<div class="input-wrapper">
 				<label for="sku">SKU</label>
@@ -147,12 +146,17 @@
 					body: JSON.stringify(data),
 				})
 					.then((response) => {
+						this.clearFormInputs();
 						this.fetchData();
 						this.$router.push("/");
 					})
 					.catch((error) => {
 						console.log(error);
 					});
+			},
+			clearFormInputs() {
+				this.$refs.productForm.reset();
+				this.productType = 1;
 			},
 		},
 		watch: {
