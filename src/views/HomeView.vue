@@ -4,9 +4,9 @@
 			<ul v-for="item in data" :key="item.id">
 				<li class="product-box">
 					<input
+						class="checkbox"
 						type="checkbox"
 						name="product"
-						class="checkbox"
 						:value="item.id"
 						v-model="selectedProducts"
 					/>
@@ -73,12 +73,13 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		text-align: center;
 		gap: 5px;
 		position: relative;
 	}
 	.checkbox {
 		position: absolute;
-		top: 5px;
-		left: 5px;
+		top: 15px;
+		left: 15px;
 	}
 </style>
