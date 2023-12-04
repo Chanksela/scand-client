@@ -218,4 +218,21 @@
 		margin-top: 0.2rem;
 		color: #10132c;
 	}
+	input,
+	input::placeholder {
+		text-indent: 5px;
+	}
+	input,
+	select {
+		padding: 0.6rem;
+		width: 15rem;
+	}
+	input {
+		border-radius: 3px;
+		outline: none;
+		border: none;
+	}
+	label {
+		font-weight: 600;
+	}
 </style>
