@@ -13,7 +13,7 @@
 					<div>{{ item.sku }}</div>
 					<div>{{ item.name }}</div>
 					<div>{{ item.price }}</div>
-					<div>{{ item.parameters }}</div>
+					<div>{{ item.parameters }} {{ measurementUnit(item.type_id) }}</div>
 				</li>
 			</ul>
 		</div>
@@ -42,8 +42,11 @@
 			emitSelectedProducts() {
 				this.$emit("selected-products", this.selectedProducts);
 			},
+			measurementUnit(type) {
+				return type == 1 ? "MB" : type == 2 ? "KG" : "";
+			},
 		},
-		// watching the selected products array for changes
+
 		watch: {
 			selectedProducts: {
 				handler() {
@@ -67,7 +70,8 @@
 	.product-box {
 		width: 200px;
 		height: 200px;
-		border: 1px solid #ccc;
+		border: 1px solid #10132c;
+		box-shadow: 3px 2px 5px #10132c;
 		padding: 5px;
 		display: flex;
 		flex-direction: column;
@@ -76,6 +80,13 @@
 		text-align: center;
 		gap: 5px;
 		position: relative;
+		cursor: default;
+	}
+	.product-box:hover {
+		border: 1px solid #e04f4f;
+		box-shadow: 3px 2px 5px #e04f4f;
+		font-size: 1.025rem;
+		transition: 0.3s ease-in;
 	}
 	.checkbox {
 		position: absolute;
