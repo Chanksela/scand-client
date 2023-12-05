@@ -4,11 +4,23 @@
 			<section class="form-section">
 				<div class="input-wrapper">
 					<label for="sku">SKU</label>
-					<input type="text" id="sku" name="sku" placeholder="Product SKU" />
+					<input
+						type="text"
+						id="sku"
+						name="sku"
+						placeholder="Product SKU"
+						required
+					/>
 				</div>
 				<div class="input-wrapper">
 					<label for="name">Name</label>
-					<input type="text" id="name" name="name" placeholder="Product Name" />
+					<input
+						type="text"
+						id="name"
+						name="name"
+						placeholder="Product Name"
+						required
+					/>
 				</div>
 				<div class="input-wrapper">
 					<label for="price">Price ($)</label>
@@ -18,6 +30,7 @@
 						name="price"
 						step="0.01"
 						placeholder="Product Price"
+						required
 					/>
 				</div>
 			</section>
@@ -41,6 +54,7 @@
 							name="size"
 							step="0.01"
 							placeholder="Size in MB"
+							required
 						/>
 					</div>
 					<p class="product-description">Please enter the size of DVD in MB</p>
@@ -54,6 +68,7 @@
 							name="weight"
 							step="0.01"
 							placeholder="Weight in KG"
+							required
 						/>
 					</div>
 					<p class="product-description">Please enter the book in KG</p>
@@ -71,6 +86,7 @@
 							name="height"
 							step="0.01"
 							placeholder="Height in CM"
+							required
 						/>
 					</div>
 					<div class="input-wrapper">
@@ -81,6 +97,7 @@
 							name="width"
 							step="0.01"
 							placeholder="Width in CM"
+							required
 						/>
 					</div>
 					<div class="input-wrapper">
@@ -91,6 +108,7 @@
 							name="length"
 							step="0.01"
 							placeholder="Length in CM"
+							required
 						/>
 					</div>
 					<p class="product-description">
