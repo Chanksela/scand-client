@@ -39,7 +39,7 @@
 		methods: {
 			fetchData() {
 				try {
-					fetch("http://localhost:8000", {
+					fetch("https://scandi-php-back-api.000webhostapp.com/", {
 						method: "GET",
 					})
 						.then((response) => response.json())

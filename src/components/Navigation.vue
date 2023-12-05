@@ -40,7 +40,7 @@
 		},
 		methods: {
 			handleDelete() {
-				fetch("http://localhost:8000/product", {
+				fetch("https://scandi-php-back-api.000webhostapp.com/product", {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
