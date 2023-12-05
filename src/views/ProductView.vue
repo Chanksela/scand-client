@@ -1,125 +1,118 @@
-<script></script>
 <template>
-	<form id="product_form" @submit="handleSubmit">
-		<section class="form-section">
-			<div class="input-wrapper">
-				<label for="sku">SKU</label>
-				<input
-					type="text"
-					id="sku"
-					name="sku"
-					placeholder="Product SKU"
-					required
-				/>
-			</div>
-			<div class="input-wrapper">
-				<label for="name">Name</label>
-				<input
-					type="text"
-					id="name"
-					name="name"
-					placeholder="Product Name"
-					required
-				/>
-			</div>
-			<div class="input-wrapper">
-				<label for="price">Price ($)</label>
-				<input
-					type="number"
-					id="price"
-					name="price"
-					step="0.01"
-					placeholder="Product Price"
-					required
-				/>
-			</div>
-		</section>
-		<section class="form-section">
-			<div class="input-wrapper">
-				<label for="productType">Type Switcher</label>
-				<select name="productType" id="productType" v-model="productType">
-					<option :value="1">DVD</option>
-					<option :value="2">Book</option>
-					<option :value="3">Furniture</option>
-				</select>
-			</div>
-		</section>
-		<section class="form-section">
-			<div class="optional-section" id="DVD" v-if="productType == 1">
+	<div class="container">
+		<form id="product_form" @submit="handleSubmit" ref="productForm">
+			<section class="form-section">
 				<div class="input-wrapper">
-					<label for="size">Size (MB)</label>
-					<input
-						type="number"
-						id="size"
-						name="size"
-						step="0.01"
-						placeholder="Size in MB"
-						required
-					/>
-				</div>
-				<p class="product-description">Please enter the size of DVD in MB</p>
-			</div>
-			<div class="optional-section" id="Book" v-else-if="productType == 2">
-				<div class="input-wrapper">
-					<label for="weight">Weight (KG)</label>
-					<input
-						type="number"
-						id="weight"
-						name="weight"
-						step="0.01"
-						placeholder="Weight in KG"
-						required
-					/>
-				</div>
-				<p class="product-description">Please enter the book in KG</p>
-			</div>
-			<div class="optional-section" id="Furniture" v-else-if="productType == 3">
-				<div class="input-wrapper">
-					<label for="height">Height (CM)</label>
-					<input
-						type="number"
-						id="height"
-						name="height"
-						step="0.01"
-						placeholder="Height in CM"
-						required
-					/>
+					<label for="sku">SKU</label>
+					<input type="text" id="sku" name="sku" placeholder="Product SKU" />
 				</div>
 				<div class="input-wrapper">
-					<label for="width">Width (CM)</label>
-					<input
-						type="number"
-						id="width"
-						name="width"
-						step="0.01"
-						placeholder="Width in CM"
-						required
-					/>
+					<label for="name">Name</label>
+					<input type="text" id="name" name="name" placeholder="Product Name" />
 				</div>
 				<div class="input-wrapper">
-					<label for="length">Length (CM)</label>
+					<label for="price">Price ($)</label>
 					<input
 						type="number"
-						id="length"
-						name="length"
+						id="price"
+						name="price"
 						step="0.01"
-						placeholder="Length in CM"
-						required
+						placeholder="Product Price"
 					/>
 				</div>
-				<p class="product-description">
-					Please enter dimensions of Furniture in HxWxL
-				</p>
+			</section>
+			<section class="form-section">
+				<div class="input-wrapper">
+					<label for="productType">Type Switcher</label>
+					<select name="productType" id="productType" v-model="productType">
+						<option :value="1">DVD</option>
+						<option :value="2">Book</option>
+						<option :value="3">Furniture</option>
+					</select>
+				</div>
+			</section>
+			<section class="form-section">
+				<div class="optional-section" id="DVD" v-if="productType == 1">
+					<div class="input-wrapper">
+						<label for="size">Size (MB)</label>
+						<input
+							type="number"
+							id="size"
+							name="size"
+							step="0.01"
+							placeholder="Size in MB"
+						/>
+					</div>
+					<p class="product-description">Please enter the size of DVD in MB</p>
+				</div>
+				<div class="optional-section" id="Book" v-else-if="productType == 2">
+					<div class="input-wrapper">
+						<label for="weight">Weight (KG)</label>
+						<input
+							type="number"
+							id="weight"
+							name="weight"
+							step="0.01"
+							placeholder="Weight in KG"
+						/>
+					</div>
+					<p class="product-description">Please enter the book in KG</p>
+				</div>
+				<div
+					class="optional-section"
+					id="Furniture"
+					v-else-if="productType == 3"
+				>
+					<div class="input-wrapper">
+						<label for="height">Height (CM)</label>
+						<input
+							type="number"
+							id="height"
+							name="height"
+							step="0.01"
+							placeholder="Height in CM"
+						/>
+					</div>
+					<div class="input-wrapper">
+						<label for="width">Width (CM)</label>
+						<input
+							type="number"
+							id="width"
+							name="width"
+							step="0.01"
+							placeholder="Width in CM"
+						/>
+					</div>
+					<div class="input-wrapper">
+						<label for="length">Length (CM)</label>
+						<input
+							type="number"
+							id="length"
+							name="length"
+							step="0.01"
+							placeholder="Length in CM"
+						/>
+					</div>
+					<p class="product-description">
+						Please enter dimensions of Furniture in HxWxL
+					</p>
+				</div>
+			</section>
+			<button type="submit" ref="submitButton" hidden />
+		</form>
+		<div class="error-container">
+			<div class="error" v-if="errors">
+				{{ errors.error }}
 			</div>
-		</section>
-		<button type="submit" ref="submitButton" hidden />
-	</form>
+		</div>
+	</div>
 </template>
 <script>
 	export default {
 		data() {
 			return {
 				productType: 1,
+				errors: {},
 			};
 		},
 		props: {
@@ -147,12 +140,26 @@
 					body: JSON.stringify(data),
 				})
 					.then((response) => {
-						this.fetchData();
-						this.$router.push("/");
+						if (response.ok) {
+							this.clearFormInputs();
+							this.fetchData();
+							this.$router.push("/");
+						} else {
+							return response.json();
+						}
+					})
+					.then((data) => {
+						const sessionData = data.sessionData;
+						this.errors = sessionData;
+						console.log(sessionData);
 					})
 					.catch((error) => {
 						console.log(error);
 					});
+			},
+			clearFormInputs() {
+				this.$refs.productForm.reset();
+				this.productType = 1;
 			},
 		},
 		watch: {
@@ -169,6 +176,19 @@
 	};
 </script>
 <style scoped>
+	.container {
+		height: 100%;
+		display: flex;
+	}
+	.error-container {
+		display: flex;
+		justify-content: center;
+		height: 100%;
+		margin-top: 10rem;
+		font-size: larger;
+		font-weight: bold;
+		color: red;
+	}
 	#product_form {
 		margin: 0.3rem 1rem;
 		display: flex;
