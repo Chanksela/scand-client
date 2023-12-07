@@ -150,7 +150,7 @@
 				e.preventDefault();
 				const formData = new FormData(e.target);
 				const data = Object.fromEntries(formData);
-				fetch("http://scandi-php-api.atwebpages.com/product", {
+				fetch("https://scandiphp-api-7c4216600634.herokuapp.com/product", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

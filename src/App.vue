@@ -39,7 +39,7 @@
 		methods: {
 			fetchData() {
 				try {
-					fetch("http://scandi-php-api.atwebpages.com/", {
+					fetch("https://scandiphp-api-7c4216600634.herokuapp.com/", {
 						method: "GET",
 					})
 						.then((response) => response.json())
