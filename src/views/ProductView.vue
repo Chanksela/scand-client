@@ -150,7 +150,7 @@
 				e.preventDefault();
 				const formData = new FormData(e.target);
 				const data = Object.fromEntries(formData);
-				fetch("https://scandi-api.000webhostapp.com/product", {
+				fetch("http://scandi-php-api.atwebpages.com/product", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
