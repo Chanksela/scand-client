@@ -53,10 +53,6 @@
 					.then((response) => {
 						// refreshing the products list after delete action
 						this.fetchData();
-						return response.json();
-					})
-					.then((data) => {
-						console.log(data);
 					})
 					.catch((error) => {
 						console.log(error);
