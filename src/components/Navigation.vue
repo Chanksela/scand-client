@@ -40,11 +40,12 @@
 		},
 		methods: {
 			handleDelete() {
-				fetch("https://scandiphp-api-7c4216600634.herokuapp.com/product/", {
+				fetch("https://scandiphp-api-7c4216600634.herokuapp.com/product", {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
 					},
+					credentials: "include",
 					body: JSON.stringify({
 						// sending the selected products to the backend
 						ids: this.selectedProducts,
