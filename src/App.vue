@@ -41,7 +41,11 @@
 				try {
 					fetch("https://scandiphp-api-7c4216600634.herokuapp.com/product", {
 						method: "GET",
-					}).then((response) => console.log(response.json()));
+					})
+						.then((response) => response.json())
+						.then((data) => {
+							this.data = data["products"];
+						});
 				} catch (error) {
 					console.error("An error occurred:", error);
 				}

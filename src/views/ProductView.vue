@@ -49,7 +49,7 @@
 					<div class="input-wrapper">
 						<label for="size">Size (MB)</label>
 						<input
-							type="number"
+							type="text"
 							id="size"
 							name="size"
 							step="0.01"
@@ -63,7 +63,7 @@
 					<div class="input-wrapper">
 						<label for="weight">Weight (KG)</label>
 						<input
-							type="number"
+							type="text"
 							id="weight"
 							name="weight"
 							step="0.01"
@@ -81,7 +81,7 @@
 					<div class="input-wrapper">
 						<label for="height">Height (CM)</label>
 						<input
-							type="number"
+							type="text"
 							id="height"
 							name="height"
 							step="0.01"
@@ -92,7 +92,7 @@
 					<div class="input-wrapper">
 						<label for="width">Width (CM)</label>
 						<input
-							type="number"
+							type="text"
 							id="width"
 							name="width"
 							step="0.01"
@@ -103,7 +103,7 @@
 					<div class="input-wrapper">
 						<label for="length">Length (CM)</label>
 						<input
-							type="number"
+							type="text"
 							id="length"
 							name="length"
 							step="0.01"
