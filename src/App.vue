@@ -44,6 +44,7 @@
 					})
 						.then((response) => response.json())
 						.then((json) => {
+							console.log(json);
 							this.data = json["products"];
 						});
 				} catch (error) {
