@@ -45,8 +45,6 @@
 					headers: {
 						"Content-Type": "application/json",
 					},
-					mode: "cors",
-					credentials: "include",
 					body: JSON.stringify({
 						// sending the selected products to the backend
 						ids: this.selectedProducts,
